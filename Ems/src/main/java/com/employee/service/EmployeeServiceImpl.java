@@ -48,6 +48,27 @@ public class EmployeeServiceImpl implements EmployeeService {
 		list.add(employee);
 		return employee;
 	}
+	
+	@Override
+	public Employee updateEmployeeDetail(Employee employee) {
+		// TODO Auto-generated method stub
+		list.forEach(e -> {
+			if(e.getEmployeeId().equals(employee.getEmployeeId())) {
+				e.setEmployeeName(employee.getEmployeeName());
+				e.setJobLeave(employee.getJobLeave());
+				
+			}
+		});
+		return employee;
+	}
+
+	@Override
+	public void deleteEmployeeDetails(String employeeId) {
+		// TODO Auto-generated method stub
+		list = this.list.stream().filter(e -> e.getEmployeeId()!= employeeId).collect(Collectors.toList());
+		
+	}
+
 
 	
 	
