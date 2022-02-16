@@ -26,4 +26,21 @@ public class EmsControllerClass {
 		return this.employeeService.getEmployeeDetails(employeeId);
 		
 	}
+	
+	@PutMapping("/employee")
+	public Employee updateEmployeeDetail(Employee employee) {
+		return this.employeeService.updateEmployeeDetail(employee);
+	}
+	
+	@DeleteMapping("/employee/{employeeId}")
+	public ResponseEntity<HttpStatus> deleteEmployeeDetails(@PathVariable String employeeId) {
+		try {
+			
+			this.employeeService.deleteEmployeeDetails(employeeId);
+			return new ResponseEntity<>(HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+	}
 }
